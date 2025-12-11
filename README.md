@@ -10,7 +10,7 @@ node -v
 npm -v
 
 2. Clonar o repositório
-git clone https://github.com/SEU-USUARIO/SEU-REPO.git
+git clone https://github.com/LuizCenci/CCH-TESTES-DE-SOFTWARE.git
 
 
 Entrar no projeto:
