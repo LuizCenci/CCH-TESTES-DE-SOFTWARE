@@ -15,7 +15,7 @@ git clone https://github.com/SEU-USUARIO/SEU-REPO.git
 
 Entrar no projeto:
 
-cd SEU-REPO
+cd SEU-REPOSITORIO
 
 3. Instalar dependências
 npm install
