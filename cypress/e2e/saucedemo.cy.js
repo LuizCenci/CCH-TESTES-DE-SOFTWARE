@@ -23,6 +23,19 @@ describe('Testes e2e no site SauceDemo', () => {
     cy.get('.shopping_cart_badge').should('contain', '1')
   })
 
+  it('Adicionar e remover item do carrinho', () => {
+    cy.login(user, pass)
+
+    cy.contains('Add to cart').first().click()
+
+
+    cy.get('.shopping_cart_badge').should('contain', '1')
+
+    cy.contains('Remove').first().click()
+
+    cy.get('.shopping_cart_badge').should('not.exist')
+  })
+
   it('Checkout completo (compra)', () => {
     cy.login(user, pass)
 
@@ -69,13 +82,19 @@ describe('Testes e2e no site SauceDemo', () => {
   it('Validação proposital para gerar erro', () => {
     cy.visit('https://www.saucedemo.com/')
 
-    // Validação impossível: exige um texto inexistente
     cy.contains('ESTE TEXTO NAO EXISTE NO SITE').should('be.visible')
+  })
+
+  it('Login inválido deve exibir mensagem de erro', () => {
+    cy.get('#user-name').type('user')
+    cy.get('#password').type('pass')
+    cy.get('#login-button').click()
+
+    cy.contains('Epic sadface').should('be.visible')
   })
 
 })
 
-// Comando customizado Cypress
 Cypress.Commands.add('login', (user, pass) => {
   cy.visit('https://www.saucedemo.com/')
   cy.get('#user-name').type(user)
